@@ -1,0 +1,58 @@
+<div id="SchoolcoursedetailForm">
+  <h1>School Course form</h1>
+  <form [formGroup]="schoolcoursedetailForm" (ngSubmit)="_submitForm(schoolcoursedetailForm)">
+    <table>
+      <tr>
+        <td hidden>SchoolCourseID : </td>
+        <td>
+          <input formControlName="SchoolCourseID" hidden>
+        </td>
+      </tr>
+      <tr>
+        <td>Subject : </td>
+        <td>
+          <input formControlName="Subject">
+        </td>
+      </tr>
+      <tr>
+        <td>Course : </td>
+        <td>
+          <input formControlName="Course">
+        </td>
+      </tr>
+      <tr>
+        <td>CourseName : </td>
+        <td>
+          <input formControlName="CourseName">
+        </td>
+      </tr>
+      <tr>
+        <td>Credit : </td>
+        <td>
+          <input formControlName="Credit">
+        </td>
+      </tr>
+      <tr>
+        <td>Prerequisites : </td>
+        <td>
+          <input formControlName="Prerequisites">
+        </td>
+      </tr>
+      <tr>
+        <td>Description : </td>
+        <td>
+          <textarea formControlName="Description"
+                    rows="10"
+                    cols="50"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button type="submit">Submit</button>
+        </td>
+      </tr>
+    </table>
+</form>
+
+</div>

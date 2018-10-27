@@ -1,0 +1,93 @@
+<div id="SchoolcoursedetailForm">
+  <h1>School Course form</h1>
+  <form name="SchoolcoursedetailForm" #myForm="ngForm" (ngSubmit)="updateschoolcoursedetail(myForm.value)">
+    <h2>
+      <input type="text"
+             name="schoolcourseID"
+             #schoolcourseID="ngModel"
+             ngModel
+             value="{{schoolcourse$.SchoolCourseID}}"
+             class="form-control" hidden />
+
+    </h2>
+
+    <table>
+      <tr>
+        <td>Subject : </td>
+        <td>
+          <input type="text"
+                 #subject="ngModel"
+                 ngModel
+                 name="subject"
+                 value="{{schoolcourse$.Subject}}"
+                 class="form-control" />
+        </td>
+      </tr>
+      <tr>
+        <td>Course : </td>
+        <td>
+          <input type="text"
+                 #course="ngModel"
+                 ngModel
+                 name="course"
+                 value="{{schoolcourse$.Course}}"
+                 class="form-control" />
+        </td>
+      </tr>
+      <tr>
+        <td>CourseName : </td>
+        <td>
+          <input type="text"
+                 #coursename="ngModel"
+                 ngModel
+                 name="coursename"
+                 value="{{schoolcourse$.CourseName}}"
+                 class="form-control" />
+        </td>
+      </tr>
+      <tr>
+        <td>Credit : </td>
+        <td>
+          <input type="text"
+                 #credit="ngModel"
+                 ngModel
+                 name="credit"
+                 value="{{schoolcourse$.Credit}}"
+                 class="form-control" />
+        </td>
+      </tr>
+      <tr>
+        <td>Prerequisites : </td>
+        <td>
+          <input type="text"
+                 #prerequisites="ngModel"
+                 ngModel
+                 name="prerequisites"
+                 value="{{schoolcourse$.Prerequisites}}"
+                 class="form-control" />
+        </td>
+      </tr>
+      <tr>
+        <td>Description : </td>
+        <td>
+          <textarea rows="10"
+                    cols="50"
+                    #description="ngModel"
+                    ngModel
+                    name="description"
+                    value="{{schoolcourse$.Description}}"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" value="Submit">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+</div>
+<div>
+  <!-- 管道 将对象转换为json对象 -->
+  {{myForm.value | json}}
+</div>

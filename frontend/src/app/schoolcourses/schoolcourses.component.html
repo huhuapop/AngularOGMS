@@ -1,0 +1,29 @@
+<h1>School Courses</h1>
+
+<ul>
+  <li *ngFor="let schoolcourse of schoolcourses$; let i = index">
+    <label><a routerLink="/schoolcoursedetails/{{schoolcourse.SchoolCourseID}}">{{ schoolcourse.Subject}} {{ schoolcourse.Course}}</a></label>
+
+    <ul>
+      <li>SchoolCourseID:{{ schoolcourse.SchoolCourseID}}</li>
+      <li>CourseName:{{ schoolcourse.CourseName}}</li>
+      <li>Credit:{{ schoolcourse.Credit }}</li>
+      <li>Prerequisites:{{ schoolcourse.Prerequisites }}</li>
+      <li>Description:{{ schoolcourse.Description }}</li>
+    </ul>
+    <div >
+      <input type="button"
+             value="Update"
+             class="btn btn-success btn-sm"
+             routerLink="/schoolcoursedetails/{{schoolcourse.SchoolCourseID}}">
+      &nbsp;
+      <input type="button"
+             value="Delete"
+             class="btn btn-danger btn-sm"
+             (click)="deleteschoolcourse(schoolcourse.SchoolCourseID,i)">
+
+    </div>
+  </li>
+</ul>
+
+
