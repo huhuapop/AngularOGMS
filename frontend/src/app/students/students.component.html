@@ -1,6 +1,33 @@
 <h1>Students</h1>
 <ul>
-  <li *ngFor="let student of students$">
-    <a>{{ student.PantherID}}</a>
+  <li *ngFor="let student of students$ | paginate: {itemsPerPage:20, currentPage:p}">
+    <a hidden>{{ student.PantherID}}</a>
+    <a routerLink="/studentdetails/{{student.PantherID}}">{{ student.FirstName}}  {{ student.MiddleName}}   {{ student.LastName }}</a>
+     <ul>
+      <li>Email:{{ student.Email }}</li>
+      <li hidden>MobileNumber:{{ student.MobileNumber }}</li>
+      <li hidden>College:{{ student.College }}</li>
+      <li hidden>Department:{{ student.Department }}</li>
+      <li hidden>Location:{{ student.Location }}</li>
+      <li>Degree:{{ student.Degree }}</li>
+      <li>Major:{{ student.Major }}</li>
+      <li>Concentration:{{ student.Concentration }}</li>
+      <li hidden>matricTerm:{{ student.matricTerm }}</li>
+      <li hidden>Position:{{ student.Position }}</li>
+      <li hidden>Status:{{ student.Status }}</li>
+    </ul>
   </li>
 </ul>
+
+<pagination-controls (pageChange)="p= $event"
+                     maxSize="10"
+                     directionLinks="true"
+                     autoHide="true"
+                     responsive="true"
+                     previousLabel="Previous"
+                     nextLabel="Next"
+                     screenReaderPaginationLabel="Pagination"
+                     screenReaderPageLabel="page"
+                     screenReaderCurrentLabel="You're on page">
+</pagination-controls>
+

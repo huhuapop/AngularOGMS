@@ -14,7 +14,7 @@ import { Console } from '@angular/core/src/console';
 })
 export class SchoolcoursedetailsComponent implements OnInit {
 
-  schoolcourseid$: number;
+  schoolcourseid$: string;
   schoolcourse$: Schoolcourse;
   error = '';
   success = '';
@@ -34,8 +34,10 @@ export class SchoolcoursedetailsComponent implements OnInit {
       Prerequisites: '',
       Description: ''
     });
-    this.data.getSchoolCoursedetails(this.schoolcourseid$).subscribe(
-      data => this.schoolcoursedetailForm.reset({
+    //console.log(this.schoolcourseid$);
+    if (this.schoolcourseid$ !== "new") {
+      this.data.getSchoolCoursedetails(this.schoolcourseid$).subscribe(
+        data => this.schoolcoursedetailForm.reset({
           SchoolCourseID: data.SchoolCourseID,
           Subject: data.Subject,
           Course: data.Course,
@@ -43,35 +45,56 @@ export class SchoolcoursedetailsComponent implements OnInit {
           Credit: data.Credit,
           Prerequisites: data.Prerequisites,
           Description: data.Description
-      })
-    )
+        })
+      )
+    }
+   
   }
 
   _submitForm({ value }) {
     // Save value
     console.log(value);
-    this.data.updateSchoolCourse({
-      SchoolCourseID: value.SchoolCourseID,
-      Subject: value.Subject,
-      Course: value.Course,
-      CourseName: value.CourseName,
-      Credit: value.Credit,
-      Prerequisites: value.Prerequisites,
-      Description: value.Description,
-    })
-      .subscribe(
-      (res: Returnstatus) => {
-        // Update the list of cars
-        //this.cars = res;
+    if (value.SchoolCourseID == '') {
+      this.data.insertSchoolCourse({
+        SchoolCourseID: value.SchoolCourseID,
+        Subject: value.Subject,
+        Course: value.Course,
+        CourseName: value.CourseName,
+        Credit: value.Credit,
+        Prerequisites: value.Prerequisites,
+        Description: value.Description,
+      })
+        .subscribe(
+          (res: Returnstatus) => {
+            // Update the list of schoolcourse
+            // Inform the user
+            this.success = 'Created successfully';
+            window.location.assign('schoolcourses');
+          },
+          (err) => this.error = err
+        );
+    }
+    else {
+      this.data.updateSchoolCourse({
+        SchoolCourseID: value.SchoolCourseID,
+        Subject: value.Subject,
+        Course: value.Course,
+        CourseName: value.CourseName,
+        Credit: value.Credit,
+        Prerequisites: value.Prerequisites,
+        Description: value.Description,
+      })
+        .subscribe(
+          (res: Returnstatus) => {
+            // Update the list of schoolcourse
+            // Inform the user
+            this.success = 'Updated successfully';
 
-        // Inform the user
-        this.success = 'Created successfully';
-
-        //// Reset the form
-        //f.reset();
-      },
-      (err) => this.error = err
-      );
+            window.location.assign('schoolcourses');
+          },
+          (err) => this.error = err
+        );
+    }
   }
 
   private resetErrors() {

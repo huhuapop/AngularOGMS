@@ -1,7 +1,7 @@
 export class Schoolcourse {
     [x: string]: any;
   constructor(
-    SchoolCourseID: number,
+    SchoolCourseID: string,
     Subject: string,
     Course: string,
     CourseName: string,

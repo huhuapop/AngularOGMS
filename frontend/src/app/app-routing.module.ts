@@ -14,7 +14,7 @@ const routes: Routes = [
 	{ 
 		path: 'schoolcourses',
 		component: SchoolcoursesComponent
-	},
+  },
 	{
 		path: 'schoolcoursedetails/:id',
 		component: SchoolcoursedetailsComponent

@@ -11,7 +11,7 @@ import { Schoolcourse } from './schoolcourse';
 })
 export class SchoolcoursesComponent implements OnInit {
 
-  schoolcourses$: Object;
+  schoolcourses$: Schoolcourse[];
   error = '';
   success = '';
 
@@ -33,7 +33,7 @@ export class SchoolcoursesComponent implements OnInit {
           //this.schoolcourses$ = res;
           this.success = 'Deleted successfully';
           console.log(i);
-          //this.schoolcourses$.splice(i, 1)
+          this.schoolcourses$.splice(i, 1)
         },
         (err) => this.error = err
       );

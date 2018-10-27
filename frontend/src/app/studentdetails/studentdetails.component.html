@@ -1,3 +1,103 @@
-<p>
-  studentdetails works!
-</p>
+<div id="StudentdetailsForm">
+  <h1>School Course form</h1>
+  <form [formGroup]="studentdetailsForm" (ngSubmit)="_submitForm(studentdetailsForm)">
+    <table>
+      <tr>
+        <td hidden>PantherID : </td>
+        <td>
+          <input formControlName="PantherID" hidden>
+        </td>
+      </tr>
+      <tr>
+        <td>FirstName : </td>
+        <td>
+          <input formControlName="FirstName">
+        </td>
+      </tr>
+      <tr>
+        <td>MiddleName : </td>
+        <td>
+          <input formControlName="MiddleName">
+        </td>
+      </tr>
+      <tr>
+        <td>LastName : </td>
+        <td>
+          <input formControlName="LastName">
+        </td>
+      </tr>
+      <tr>
+        <td>Email : </td>
+        <td>
+          <input formControlName="Email">
+        </td>
+      </tr>
+      <tr>
+        <td>MobileNumber : </td>
+        <td>
+          <input formControlName="MobileNumber">
+        </td>
+      </tr>
+      <tr>
+        <td>College : </td>
+        <td>
+          <input formControlName="College">
+        </td>
+      </tr>
+      <tr>
+        <td>Department : </td>
+        <td>
+          <input formControlName="Department">
+        </td>
+      </tr>
+      <tr>
+        <td>Location : </td>
+        <td>
+          <input formControlName="Location">
+        </td>
+      </tr>
+      <tr>
+        <td>Degree : </td>
+        <td>
+          <input formControlName="Degree">
+        </td>
+      </tr>
+      <tr>
+        <td>Major : </td>
+        <td>
+          <input formControlName="Major">
+        </td>
+      </tr>
+      <tr>
+        <td>Concentration : </td>
+        <td>
+          <input formControlName="Concentration">
+        </td>
+      </tr>
+      <tr>
+        <td>matricTerm : </td>
+        <td>
+          <input formControlName="matricTerm">
+        </td>
+      </tr>
+      <tr>
+        <td>Position : </td>
+        <td>
+          <input formControlName="Position">
+        </td>
+      <tr>
+        <td>Status : </td>
+        <td>
+          <input formControlName="Status">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button type="submit">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+</div>

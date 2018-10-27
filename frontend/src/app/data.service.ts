@@ -20,18 +20,6 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  students: Student[];
-  getStudents(): Observable<Student[]> {
-    //console.log('start');
-    return this.http.get(`http://localhost/PHPOGMS/schoolcourses/students`).pipe(
-     map((res) => {
-       //console.log(res);
-        this.students = res['data'];
-        return this.students;
-      }),
-      catchError(this.handleError));
-  }
-
   schoolcourses: Schoolcourse[]
   getSchoolCourses(): Observable<Student[]> {
     //console.log('start');
@@ -58,32 +46,27 @@ export class DataService {
       catchError(this.handleError));
   }
 
-  //updateSchoolCourse(schoolcourse:Schoolcourse): Observable<Returnstatus> {
-  //  console.log('start update');
-  //  //console.log(`${this.baseUrl}/schoolcourses/schoolcourseupdate`);
-  //  //console.log(schoolcourse);
-  //  return this.http.put(`${this.baseUrl}/schoolcourses/schoolcourseupdate`, { data:schoolcourse }).pipe(
-  //    map((res) => {
-  //      console.log(res['data']);
-  //      this.returnstatus = res['data'][0];
-  //      console.log(this.returnstatus);
-  //      console.log('end update');
-  //      return this.returnstatus;
-  //    }),
-  //    catchError(this.handleError));
-  //}
+  insertSchoolCourse(schoolcourse: Schoolcourse): Observable<Returnstatus> {
+    console.log('start insert');
+    return this.http.post(`${this.baseUrl}/schoolcourses/schoolcourseinsert`, JSON.stringify({ data: schoolcourse }))
+      .pipe(map((res) => {
+        console.log(res);
+        this.returnstatus = res['data'][0]
+        console.log(this.returnstatus);
+        console.log('end insert');
+        return this.returnstatus;
+      }),
+        catchError(this.handleError));
+  }
 
   updateSchoolCourse(schoolcourse: Schoolcourse): Observable<Returnstatus> {
     console.log('start update');
     return this.http.post(`${this.baseUrl}/schoolcourses/schoolcourseupdate`, JSON.stringify({ data: schoolcourse }))
-    //return this.http.post(`http://localhost/PHPOGMS/schoolcourses/schoolcourseupdate`, { data: schoolcourse })
-    //return this.http.post(`http://localhost/angular-with_php_backend/backend/api/schoolcourseupdate`, { data: schoolcourse })
       .pipe(map((res) => {
         console.log(res);
         this.returnstatus = res['data'][0]
         console.log(this.returnstatus);
         console.log('end update');
-        //this.cars.push(res['data']);
         return this.returnstatus;
       }),
         catchError(this.handleError));
@@ -101,6 +84,31 @@ export class DataService {
       catchError(this.handleError));
   }
 
+  students: Student[];
+  getStudents(): Observable<Student[]> {
+    //console.log('start');
+    return this.http.get(`${this.baseUrl}/students/students`).pipe(
+      map((res) => {
+        //console.log(res);
+        this.students = res['data'];
+        return this.students;
+      }),
+      catchError(this.handleError));
+  }
+
+  studentdetails: Student
+  getStudentdetails(PantherID): Observable<Student> {
+    console.log('start get');
+    console.log(PantherID);
+    return this.http.get(`${this.baseUrl}/students/students?id=${PantherID}`).pipe(
+      map((res) => {
+        //console.log(res['data']);
+        this.studentdetails = res['data'][0];
+        //console.log(this.schoolcoursedetail);
+        return this.studentdetails;
+      }),
+      catchError(this.handleError));
+  }
 
   private handleError(error: HttpErrorResponse) {
     console.log(error);

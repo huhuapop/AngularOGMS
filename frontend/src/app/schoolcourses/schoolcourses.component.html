@@ -1,6 +1,13 @@
 <h1>School Courses</h1>
 
 <ul>
+  <li>
+    <input type="button"
+           value="Insert"
+           class="btn btn-success btn-sm"
+           routerLink="/schoolcoursedetails/new">
+  </li>
+  
   <li *ngFor="let schoolcourse of schoolcourses$; let i = index">
     <label><a routerLink="/schoolcoursedetails/{{schoolcourse.SchoolCourseID}}">{{ schoolcourse.Subject}} {{ schoolcourse.Course}}</a></label>
 
@@ -11,7 +18,7 @@
       <li>Prerequisites:{{ schoolcourse.Prerequisites }}</li>
       <li>Description:{{ schoolcourse.Description }}</li>
     </ul>
-    <div >
+    <div>
       <input type="button"
              value="Update"
              class="btn btn-success btn-sm"

@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { SchoolcoursesComponent } from './schoolcourses/schoolcourses.component';
 import { SchoolcoursedetailsComponent } from './schoolcoursedetails/schoolcoursedetails.component';
-import { StudentdetailsComponent } from './studentdetails/studentdetails.component';
 import { StudentsComponent } from './students/students.component';
+import { StudentdetailsComponent } from './studentdetails/studentdetails.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,15 +21,17 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     MenuComponent,
     SchoolcoursesComponent,
     SchoolcoursedetailsComponent,
-    StudentdetailsComponent,
-    StudentsComponent
+    StudentsComponent,
+    StudentdetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
