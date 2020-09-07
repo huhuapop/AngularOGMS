@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { Returnstatus } from '../returnstatus';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../data.service';
 import { Student } from '../students/student';
-import { Console } from '@angular/core/src/console';
 
 @Component({
   selector: 'app-studentdetails',

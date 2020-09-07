@@ -1,4 +1,5 @@
 export class Student {
+  [x: string]: any;
   constructor(
     PantherID: number,
     FirstName: string,

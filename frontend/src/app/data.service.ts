@@ -1,13 +1,12 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams  } from '@angular/common/http';
-
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-
-import { Student } from './students/Student';
-import { Schoolcourse } from './schoolcourses/schoolcourse';
+import { catchError, map } from 'rxjs/operators';
 import { Returnstatus } from './returnstatus';
-import { Console } from '@angular/core/src/console';
+import { Schoolcourse } from './schoolcourses/schoolcourse';
+import { Student } from './students/Student';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -96,16 +95,16 @@ export class DataService {
       catchError(this.handleError));
   }
 
-  studentdetails: Student
+  studentdetail: Student
   getStudentdetails(PantherID): Observable<Student> {
     console.log('start get');
     console.log(PantherID);
     return this.http.get(`${this.baseUrl}/students/students?id=${PantherID}`).pipe(
       map((res) => {
         //console.log(res['data']);
-        this.studentdetails = res['data'][0];
+        this.studentdetail = res['data'][0];
         //console.log(this.schoolcoursedetail);
-        return this.studentdetails;
+        return this.studentdetail;
       }),
       catchError(this.handleError));
   }
